@@ -87,7 +87,10 @@ func (r *SCTPTransport) Start(remoteCaps SCTPCapabilities) error {
 		return err
 	}
 
-	sctpAssociation, err := sctp.Client(r.dtlsTransport.conn)
+	sctpAssociation, err := sctp.Client(sctp.Config{
+		NetConn:       r.dtlsTransport.conn,
+		LoggerFactory: r.api.settingEngine.LoggerFactory,
+	})
 	if err != nil {
 		return err
 	}
@@ -130,7 +133,9 @@ func (r *SCTPTransport) acceptDataChannels() {
 	a := r.association
 	r.lock.RUnlock()
 	for {
-		dc, err := datachannel.Accept(a)
+		dc, err := datachannel.Accept(a, &datachannel.Config{
+			LoggerFactory: r.api.settingEngine.LoggerFactory,
+		})
 		if err != nil {
 			fmt.Println("Failed to accept data channel:", err)
 			// TODO: Kill DataChannel/PeerConnection?
