@@ -1,7 +1,7 @@
 module github.com/pions/webrtc
 
 require (
-	github.com/pions/datachannel v1.2.2-0.20190402182958-dc06f09fe131
+	github.com/pions/datachannel v1.2.2-0.20190402221034-1185572bf416
 	github.com/pions/dtls v1.2.2
 	github.com/pions/ice v0.2.0
 	github.com/pions/logging v0.2.0
