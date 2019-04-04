@@ -6,8 +6,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/pions/rtp"
-	"github.com/pions/rtp/codecs"
+	"github.com/pion/rtp"
+	"github.com/pion/rtp/codecs"
 )
 
 // IVFWriter is used to take RTP packets and write them to an IVF on disk
